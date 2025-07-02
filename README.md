@@ -14,4 +14,7 @@ A C# console application to create bank accounts and simulate their cashflow.
 # Getting Started
 
 ```bash
+git clone https://github.com/dominicf2001/finance-simulator.git
+cd finance-simulator
+dotnet run
 ```
