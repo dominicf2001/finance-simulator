@@ -1,12 +1,13 @@
 public record Transaction(Decimal Amount);
 public class Account
 {
-    public Decimal InitialBalance;
+    public string Name = "";
+    public Decimal InitialBalance = 0;
     public List<Transaction> Transactions = [];
 
-    public Account(Decimal initialBalance)
+    public Account(string name)
     {
-        InitialBalance = initialBalance;
+        Name = name;
     }
 
     public Decimal GetBalance() => InitialBalance + Transactions.Sum((t) => t.Amount);

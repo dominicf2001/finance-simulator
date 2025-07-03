@@ -32,15 +32,12 @@ while (true)
                 Command Options:
                     -h|--help   Show command help
 
-            """);
+                """);
             break;
         case "account-add":
-            string[] options = input[1..];
-            if (options.Count() > 0)
+            if (input.Count() > 0 && new[] { "-h", "--help" }.Contains(input[1]))
             {
-                if (new[] { "-h", "--help" }.Contains(options[0]))
-                {
-                    Console.Write("""
+                Console.Write("""
                         Description:
                             Create an account.
 
@@ -52,7 +49,32 @@ while (true)
                             -i|--initial-balance    The account's initial balance 
 
                     """);
-                    break;
+                break;
+            }
+
+            if (input.Count() < 1 || CLI.isArgFlag(input[1]))
+            {
+                Console.WriteLine("No account name provided.");
+                break;
+            }
+
+            string accountName = input[1];
+
+            List<CLI.Option> options = CLI.Parse.Options(input[2..]);
+
+            Account account = new(accountName);
+
+            if (options.Count() > 0)
+            {
+                // COMMAND LOGIC
+                foreach (CLI.Option option in options)
+                {
+                    switch (option.Name)
+                    {
+                        case "--initial-balance":
+                        case "-i":
+                            break;
+                    }
                 }
             }
             break;
