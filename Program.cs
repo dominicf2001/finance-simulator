@@ -30,9 +30,6 @@ while (true)
                     account-add <name> [options]    Create an account. 
                     quit                            Quit the program.
 
-                Command Options:
-                    -h|--help   Show command help.
-
                 """);
             break;
         case "account-add":
